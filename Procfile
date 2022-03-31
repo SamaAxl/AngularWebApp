@@ -1,2 +1,2 @@
-worker: ng serve
-server: node server.js
+app: ng serve
+datos: node server.js
