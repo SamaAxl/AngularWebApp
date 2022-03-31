@@ -1,1 +1,2 @@
-worker: ng serve --open
+worker: ng serve
+server: node server.js
