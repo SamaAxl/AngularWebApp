@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import {Router} from '@angular/router'; 
-import { Item } from 'src/app/models/Item';
+import { Item } from 'src/app/models/item';
 import {ItemService} from '../../services/item.service';
 
 @Component({
@@ -10,9 +10,9 @@ import {ItemService} from '../../services/item.service';
 })
 export class AddItemComponent implements OnInit {
 
-  title:string;
-  price:number;
-  quantity: number;
+  title:string = '';
+  price:number = 0;
+  quantity: number = 0;
   @Output() addItem:EventEmitter<any> = new EventEmitter();
 
   constructor(private router:Router, private itemService:ItemService) { }
