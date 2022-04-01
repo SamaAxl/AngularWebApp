@@ -10,17 +10,8 @@ app.get('/*', function(req,res)
 
 {res.sendFile(path.join(__dirname+'/dist/shopping-list/index.html'));});
 
-app.listen(process.env.PORT || 8080);
-
-app.use(cors());
-app.use(express.urlencoded({extended: false}));
-app.use(express.json());
-
 let items = [];
 
-app.get('/', (req, res) => {
-    res.send('Servidor de prueba');
-});
 app.get('/items', async (req, res) => {
     await open();
     res.json(items);
@@ -64,9 +55,13 @@ async function open(){
     console.log('open',items);
 }
 
+app.listen(process.env.PORT || 8080);
+
+app.use(cors());
+app.use(express.urlencoded({extended: false}));
+app.use(express.json());
 
 
 
-app.listen(3000, () => {
-    console.log('servidor iniciado...');
-});
+
+
