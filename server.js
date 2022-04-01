@@ -5,17 +5,6 @@ const cors = require('cors');
 const {v4: uuidv4} = require('uuid');
 const {readFile, writeFile} = require('fs').promises;
 
-app.use(express.static(__dirname + '/dist/shopping-list'));
-app.get('/*', function(req,res)
-
-{res.sendFile(path.join(__dirname+'/dist/shopping-list/index.html'));});
-
-app.listen(process.env.PORT || 8080);
-
-app.use(cors());
-app.use(express.urlencoded({extended: false}));
-app.use(express.json());
-
 let items = [];
 
 app.get('/', (req, res) => {
@@ -64,9 +53,18 @@ async function open(){
     console.log('open',items);
 }
 
-
-
-
 app.listen(3000, () => {
     console.log('servidor iniciado...');
 });
+
+app.use(express.static(__dirname + '/dist/shopping-list'));
+app.get('/*', function(req,res)
+
+{res.sendFile(path.join(__dirname+'/dist/shopping-list/index.html'));});
+
+app.listen(process.env.PORT || 8080);
+
+app.use(cors());
+app.use(express.urlencoded({extended: false}));
+app.use(express.json());
+
